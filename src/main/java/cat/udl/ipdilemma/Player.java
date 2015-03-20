@@ -4,7 +4,7 @@ import cat.udl.ipdilemma.exceptions.NonExistingException;
 
 public class Player {
     
-    private PlayerStrategy strategy;
+    private final PlayerStrategy strategy;
      
     /**
      * Creates a new player using an existent strategy.

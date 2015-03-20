@@ -2,6 +2,7 @@ package cat.udl.ipdilemma;
 
 /**
  * Represents an immutable pair of two elements
+ * @param <T> Pair elements type.
  */
 public final class Pair<T> {
 
