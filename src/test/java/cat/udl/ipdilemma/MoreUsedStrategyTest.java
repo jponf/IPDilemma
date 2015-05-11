@@ -21,7 +21,7 @@ public class MoreUsedStrategyTest {
     }
 
     /**
-     * Since it is configured so as COOPERATION is the more used strategy
+     * Basic Test: Since it is configured so as COOPERATION is the more used strategy
      * it should return COOPERATION.
      */
     @Test
@@ -30,8 +30,8 @@ public class MoreUsedStrategyTest {
     }
 
     /**
-     * Iteratively requesting more actions, without notifying any additional
-     * rival action, has to return COOPERATION.
+     * Basic Test: Requesting the next action more than once, without modifying
+     *             the rival's last action, shall return the same result.
      */
     @Test
     public void getNextActionMoreThanOnceTest() {
@@ -42,7 +42,7 @@ public class MoreUsedStrategyTest {
     }
 
     /**
-     * Notifying the same action does not have to change the result.
+     * Basic Test: Notifying the same action does not have to change the result.
      */
     @Test
     public void notifyRivalSameActionTest() {
@@ -53,8 +53,8 @@ public class MoreUsedStrategyTest {
     }
 
     /**
-     * Notifying DEFECTION more times than COOPERATION has to change the
-     * next action to DEFECTION.
+     * Basic Test: Testing if our strategy will betray, if rival usually betray
+     * him.
      */
     @Test
     public void notifyRivalDifferentActionTest() {
@@ -65,7 +65,8 @@ public class MoreUsedStrategyTest {
     }
 
     /**
-     * A copy must be equals to the original one.
+     * Basic Test: Testing if our strategy will give us a correct copy of
+     *             itself.
      */
     @Test
     public void equalsTest() {
@@ -73,7 +74,8 @@ public class MoreUsedStrategyTest {
     }
 
     /**
-     * A copy must have the same hash code as the original one.
+     * Basic Test: Testing if a copy will return the same hash code as the
+     *             as the original instance.
      */
     @Test
     public void hashcodeTest() {
@@ -81,7 +83,8 @@ public class MoreUsedStrategyTest {
     }
 
     /**
-     * A copy of the instance is equals to the instance being copied.
+     * Basic Test: Testing if our strategy will be return a correct copy of
+     *             itself.
      */
     @Test
     public void copyTest() {

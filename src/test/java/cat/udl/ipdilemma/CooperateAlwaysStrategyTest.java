@@ -17,7 +17,7 @@ public class CooperateAlwaysStrategyTest {
     }
 
     /**
-     * It must return cooperation as the next action.
+     * Basic Test: Testing if our strategy will cooperate once.
      */
     @Test
     public void testGetNextActionOnce() {
@@ -25,7 +25,7 @@ public class CooperateAlwaysStrategyTest {
     }
 
     /**
-     * Requesting more actions have the same result, action = COOPERATION.
+     * Basic Test:  Testing if our strategy will cooperate more than once.
      */
     @Test
     public void testGetNextActionMoreThanOnce() {
@@ -35,7 +35,7 @@ public class CooperateAlwaysStrategyTest {
     }
 
     /**
-     * A copy of the instance is equals to the instance being copied.
+     * Basic Test: Testing if our strategy will return a correct copy of itself.
      */
     @Test
     public void testCopy() {

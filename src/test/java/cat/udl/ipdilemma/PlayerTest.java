@@ -37,7 +37,7 @@ public class PlayerTest {
     }
 
     /**
-     * Test of nextAction method, of class Player.
+     * Basic Test: Test of nextAction method, of class Player.
      */
     @Test
     public void testPerformAction() {
@@ -45,7 +45,7 @@ public class PlayerTest {
     }
 
     /**
-     * Test of notifyRivalAction method, of class Player.
+     * Basic Test: Test of notifyRivalAction method, of class Player.
      */
     @Test
     public void testNotifyRivalAction() {

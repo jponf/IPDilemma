@@ -14,7 +14,7 @@ public class DefectAlwaysStrategyTest {
     }
 
     /**
-     * It must return DEFECTION as the next action.
+     * Basic Test: Testing if strategy will betray its partner once.
      */
     @Test
     public void testGetNextActionOnce() {
@@ -22,8 +22,7 @@ public class DefectAlwaysStrategyTest {
     }
 
     /**
-     * Requesting more actions does not change the result, it is always
-     * DEFECTION.
+     * Basic Test: Testing if strategy will betray its partner more than once.
      */
     @Test
     public void testGetNextActionMoreThanOnce() {
@@ -33,7 +32,7 @@ public class DefectAlwaysStrategyTest {
     }
 
     /**
-     * A copy of the instance is equals to the instance being copied.
+     * Basic Test: Testing if our strategy will return a correct copy of itself.
      */
     @Test
     public void testCopy() {

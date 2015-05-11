@@ -33,7 +33,7 @@ public class MajorityRuleStrategyTest {
     }
 
     /**
-     * Since 2/3 are defection the next action should be defection too.
+     * Basic Test: Since 2/3 are defection the next action should be defection.
      */
     @Test
     public void testGetNextActionOnce() {
@@ -41,8 +41,8 @@ public class MajorityRuleStrategyTest {
     }
 
     /**
-     * Since 2/3 are always defection the next action should be always
-     * defection.
+     * Basic Test: Since 2/3 are always defection the next action should be
+     *             always defection.
      */
     @Test
     public void testGetNextActionMoreThanOnce() {
@@ -52,10 +52,8 @@ public class MajorityRuleStrategyTest {
     }
 
     /**
-     * After notifying the rival action "COOPERATION" twice, the internal
-     * "more used" strategy will return COOPERATION, and hence the internal
-     * strategies will now vote 2/3 for COOPERATION and it should then be
-     * the next action.
+     * Basic Test: Testing if our strategy will be cooperate if he has a nice
+     *             partner (1DEFECTION, 2 COOPERATE).
      */
     @Test
     public void testNotifyRivalAction() {
@@ -68,7 +66,8 @@ public class MajorityRuleStrategyTest {
     }
 
     /**
-     * A copy of the instance is equals to the instance being copied.
+     * Basic Test: Testing if our strategy will return  a correct copy of
+     *             itself.
      */
     @Test
     public void testCopy() {

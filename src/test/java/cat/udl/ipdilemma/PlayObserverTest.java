@@ -28,7 +28,7 @@ public class PlayObserverTest implements Observer {
 	}
 
 	/**
-	 * Execute a round that should call the update method
+	 * Basic Test: Testing if observer updates once.
 	 */
 	@Test
 	public void observerUpdateOnceTest() {
@@ -38,7 +38,10 @@ public class PlayObserverTest implements Observer {
 		expected_round = 1;
 		play.runRound();
 	}
-	
+
+	/**
+	 * Basic Test: Testing if observer updates twice.
+	 */
 	@Test
 	public void observerUpdateTwiceTest() {
 		// Set up expected valus on update
