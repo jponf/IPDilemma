@@ -35,7 +35,7 @@ public class CooperateAlwaysStrategyTest {
     }
 
     /**
-     * A copy is equals to the instance being copied.
+     * A copy of the instance is equals to the instance being copied.
      */
     @Test
     public void testCopy() {

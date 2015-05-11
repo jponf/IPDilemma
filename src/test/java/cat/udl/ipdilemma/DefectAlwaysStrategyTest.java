@@ -13,11 +13,18 @@ public class DefectAlwaysStrategyTest {
         defectStrategy = new DefectAlwaysStrategy();
     }
 
+    /**
+     * It must return DEFECTION as the next action.
+     */
     @Test
     public void testGetNextActionOnce() {
         assertEquals(PlayerAction.DEFECTION, defectStrategy.getNextAction());
     }
 
+    /**
+     * Requesting more actions does not change the result, it is always
+     * DEFECTION.
+     */
     @Test
     public void testGetNextActionMoreThanOnce() {
         PlayerAction pa = defectStrategy.getNextAction();
@@ -25,6 +32,9 @@ public class DefectAlwaysStrategyTest {
         assertEquals(PlayerAction.DEFECTION, pa);
     }
 
+    /**
+     * A copy of the instance is equals to the instance being copied.
+     */
     @Test
     public void testCopy() {
         assertEquals(defectStrategy, defectStrategy.copy());
