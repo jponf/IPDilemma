@@ -1,7 +1,7 @@
 package cat.udl.ipdilemma;
 
-import ipdilemma.exceptions.CurrentlyExistingException;
-import ipdilemma.exceptions.NonExistingException;
+import cat.udl.ipdilemma.exceptions.CurrentlyExistingException;
+import cat.udl.ipdilemma.exceptions.NonExistingException;
 import java.lang.reflect.Field;
 import org.junit.Before;
 import org.junit.Test;
