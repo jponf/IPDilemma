@@ -13,11 +13,17 @@ public class DefectAlwaysStrategyTest {
         defectStrategy = new DefectAlwaysStrategy();
     }
 
+    /**
+     * Basic Test: Testing if strategy will be able to betray its partner once.
+     */
     @Test
     public void testGetNextActionOnce() {
         assertEquals(PlayerAction.DEFECTION, defectStrategy.getNextAction());
     }
 
+    /**
+     * Basic Test: Testing if strategy will be able to betray its partner twice.
+     */
     @Test
     public void testGetNextActionMoreThanOnce() {
         PlayerAction pa = defectStrategy.getNextAction();
@@ -25,6 +31,9 @@ public class DefectAlwaysStrategyTest {
         assertEquals(PlayerAction.DEFECTION, pa);
     }
 
+    /**
+     * Basic Test: Testing if our strategy will be able to give us a copy of itself.
+     */
     @Test
     public void testCopy() {
         assertEquals(defectStrategy, defectStrategy.copy());

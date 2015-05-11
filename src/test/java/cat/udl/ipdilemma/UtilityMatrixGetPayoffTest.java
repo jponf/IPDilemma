@@ -19,6 +19,20 @@ public class UtilityMatrixGetPayoffTest {
         umatrix = new UtilityMatrix(t, r, p, s);
     }
 
+    /**
+     * Flow Control Test: Testing if both players cooperate, they will have a prize(R)
+     *
+     *             |        B coopera       |    B deserta           |
+     * ------------|------------------------|------------------------|
+     *             | Presoner A | PresonerB | Presoner A | PresonerB |
+     * A coopera   |------------|-----------|------------|-----------|
+     *             |     R=2    |    R=2    |    S=0     |    T=3    |
+     * ------------|------------|-----------|------------|-----------|
+     *             | Presoner A | PresonerB | Presoner A | PresonerB |
+     * A deserta   |------------|-----------|------------|-----------|
+     *             |     T=3    |    S=0    |    P=1     |    P=1    |
+     * ------------|------------|-----------|------------|-----------|
+    */
     @Test
     public void testGetPayoffACooperationBCooperation() {
         Pair<Integer> expected = new Pair<>(r, r);
@@ -27,6 +41,21 @@ public class UtilityMatrixGetPayoffTest {
         assertEquals("Both values should be R", expected, payoff);
     }
 
+    /**
+     * Flow Control Test: Testing if player A cooperates and player B betrays,
+     * Player A will be a loser (S) and Player B will be a traitor(T).
+     *
+     *             |        B coopera       |    B deserta           |
+     * ------------|------------------------|------------------------|
+     *             | Presoner A | PresonerB | Presoner A | PresonerB |
+     * A coopera   |------------|-----------|------------|-----------|
+     *             |     R=2    |    R=2    |    S=0     |    T=3    |
+     * ------------|------------|-----------|------------|-----------|
+     *             | Presoner A | PresonerB | Presoner A | PresonerB |
+     * A deserta   |------------|-----------|------------|-----------|
+     *             |     T=3    |    S=0    |    P=1     |    P=1    |
+     * ------------|------------|-----------|------------|-----------|
+     */
     @Test
     public void testGetPayoffACooperationBDefection() {
         Pair<Integer> expected = new Pair<>(s, t);
@@ -35,6 +64,20 @@ public class UtilityMatrixGetPayoffTest {
         assertEquals("Values should be [S,T]", expected, payoff);
     }
 
+    /**
+     * Flow Control Test: Testing if player B cooperates and player A betrays,
+     * Player B will be a loser (S) and Player A will be a traitor(T).
+     *             |        B coopera       |    B deserta           |
+     * ------------|------------------------|------------------------|
+     *             | Presoner A | PresonerB | Presoner A | PresonerB |
+     * A coopera   |------------|-----------|------------|-----------|
+     *             |     R=2    |    R=2    |    S=0     |    T=3    |
+     * ------------|------------|-----------|------------|-----------|
+     *             | Presoner A | PresonerB | Presoner A | PresonerB |
+     * A deserta   |------------|-----------|------------|-----------|
+     *             |     T=3    |    S=0    |    P=1     |    P=1    |
+     * ------------|------------|-----------|------------|-----------|
+     */
     @Test
     public void testGetPayoffADefectionBCooperation() {
         Pair<Integer> expected = new Pair<>(t, s);
@@ -42,6 +85,21 @@ public class UtilityMatrixGetPayoffTest {
                 PlayerAction.COOPERATION);
         assertEquals("Values should be [T,S]", expected, payoff);
     }
+
+    /**
+     * Flow Control Test: Testing if both players betray themselves, they will be punished(P).
+     *
+     *             |        B coopera       |    B deserta           |
+     * ------------|------------------------|------------------------|
+     *             | Presoner A | PresonerB | Presoner A | PresonerB |
+     * A coopera   |------------|-----------|------------|-----------|
+     *             |     R=2    |    R=2    |    S=0     |    T=3    |
+     * ------------|------------|-----------|------------|-----------|
+     *             | Presoner A | PresonerB | Presoner A | PresonerB |
+     * A deserta   |------------|-----------|------------|-----------|
+     *             |     T=3    |    S=0    |    P=1     |    P=1    |
+     * ------------|------------|-----------|------------|-----------|
+     */
 
     @Test
     public void testGetPayoffADefectionBDefection() {

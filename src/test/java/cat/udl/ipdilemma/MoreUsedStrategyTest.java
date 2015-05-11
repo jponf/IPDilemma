@@ -16,11 +16,17 @@ public class MoreUsedStrategyTest {
         strategy.notifyRivalAction(PlayerAction.COOPERATION);
     }
 
+    /**
+     * Basic Test: Testing that our strategy will cooperate once, if rival cooperate.
+     */
     @Test
     public void getNextActionOnceTest() {
         assertEquals(PlayerAction.COOPERATION, strategy.getNextAction());
     }
 
+    /**
+     * Basic Test: Testing if our strategy will cooperate twice, when its partner cooperated.
+     */
     @Test
     public void getNextActionMoreThanOnceTest() {
         PlayerAction action = strategy.getNextAction();
@@ -29,6 +35,9 @@ public class MoreUsedStrategyTest {
         assertEquals(PlayerAction.COOPERATION, action);
     }
 
+    /**
+     * Basic Test: Testing if our strategy will cooperate twice, if rival cooperate.
+     */
     @Test
     public void notifyRivalSameActionTest() {
         strategy.notifyRivalAction(PlayerAction.COOPERATION);
@@ -37,6 +46,9 @@ public class MoreUsedStrategyTest {
         assertEquals(PlayerAction.COOPERATION, strategy.getNextAction());
     }
 
+    /**
+     * Basic Test: Testing if our strategy will betray, if rival usually betray him.
+     */
     @Test
     public void notifyRivalDifferentActionTest() {
         strategy.notifyRivalAction(PlayerAction.DEFECTION);
@@ -45,16 +57,25 @@ public class MoreUsedStrategyTest {
         assertEquals(PlayerAction.DEFECTION, strategy.getNextAction());
     }
 
+    /**
+     * Basic Test: Testing if our strategy will be able to give us a correct copy of itself.
+     */
     @Test
     public void equalsTest() {
         assertTrue(strategy.equals(strategy.copy()));
     }
 
+    /**
+     * Basic Test: Testing if our strategy will be able to give us a copy of his hasCode.
+     */
     @Test
     public void hashcodeTest() {
         assertEquals(strategy.hashCode(), strategy.copy().hashCode());
     }
 
+    /**
+     * Basic Test: Testing if our strategy will be able to give us a copy of itself.
+     */
     @Test
     public void copyTest() {
         assertEquals(strategy, strategy.copy());

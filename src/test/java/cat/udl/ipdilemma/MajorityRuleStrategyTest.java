@@ -27,11 +27,17 @@ public class MajorityRuleStrategyTest {
 
     }
 
+    /**
+     * Basic Test: Testing if our strategy will betray its partner once (2 DEFECTION, 1 COOPERATE).
+     */
     @Test
     public void testGetNextActionOnce() {
         assertEquals(PlayerAction.DEFECTION, strategy.getNextAction());
     }
 
+    /**
+     * Basic Test: Testing if our strategy will betray its partner twice (2 DEFECTION, 1 COOPERATE).
+     */
     @Test
     public void testGetNextActionMoreThanOnce() {
         PlayerAction pa = strategy.getNextAction();
@@ -39,6 +45,9 @@ public class MajorityRuleStrategyTest {
         assertEquals(PlayerAction.DEFECTION, pa);
     }
 
+    /**
+     * Basic Test: Testing if our strategy will be able to cooperate if he has a nice partner (1DEFECTION, 2 COOPERATE).
+     */
     @Test
     public void testNotifyRivalAction() {
         // If notifyRivaAction propagates well, two strategies returns
@@ -49,6 +58,9 @@ public class MajorityRuleStrategyTest {
         assertEquals(PlayerAction.COOPERATION, strategy.getNextAction());
     }
 
+    /**
+     * Basic Test: Testing if our strategy will be able to give us a copy of itself.
+     */
     @Test
     public void testCopy() {
         assertEquals(strategy, strategy.copy());
