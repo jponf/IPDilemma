@@ -25,7 +25,7 @@ public class CooperateAlwaysStrategy implements PlayerStrategy {
 
     @Override
     public PlayerStrategy copy() {
-        // This class is "inmutable", return this is acceptable as a deep copy
+        // This class is "immutable", return this is acceptable as a deep copy
         return this;
     }
 }

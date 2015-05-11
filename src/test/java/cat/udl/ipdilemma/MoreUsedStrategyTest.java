@@ -8,6 +8,10 @@ public class MoreUsedStrategyTest {
 
     PlayerStrategy strategy;
 
+    /**
+     * Initialize the tested strategy, in a way that COOPERATION is the
+     * initial more used strategy.
+     */
     @Before
     public void initialize() {
         strategy = new MoreUsedStrategy();
@@ -16,11 +20,19 @@ public class MoreUsedStrategyTest {
         strategy.notifyRivalAction(PlayerAction.COOPERATION);
     }
 
+    /**
+     * Since it is configured so as COOPERATION is the more used strategy
+     * it should return COOPERATION.
+     */
     @Test
     public void getNextActionOnceTest() {
         assertEquals(PlayerAction.COOPERATION, strategy.getNextAction());
     }
 
+    /**
+     * Iteratively requesting more actions, without notifying any additional
+     * rival action, has to return COOPERATION.
+     */
     @Test
     public void getNextActionMoreThanOnceTest() {
         PlayerAction action = strategy.getNextAction();
