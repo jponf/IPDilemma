@@ -41,6 +41,9 @@ public class MoreUsedStrategyTest {
         assertEquals(PlayerAction.COOPERATION, action);
     }
 
+    /**
+     * Notifying the same action does not have to change the result.
+     */
     @Test
     public void notifyRivalSameActionTest() {
         strategy.notifyRivalAction(PlayerAction.COOPERATION);
@@ -49,6 +52,10 @@ public class MoreUsedStrategyTest {
         assertEquals(PlayerAction.COOPERATION, strategy.getNextAction());
     }
 
+    /**
+     * Notifying DEFECTION more times than COOPERATION has to change the
+     * next action to DEFECTION.
+     */
     @Test
     public void notifyRivalDifferentActionTest() {
         strategy.notifyRivalAction(PlayerAction.DEFECTION);
@@ -57,16 +64,25 @@ public class MoreUsedStrategyTest {
         assertEquals(PlayerAction.DEFECTION, strategy.getNextAction());
     }
 
+    /**
+     * A copy must be equals to the original one.
+     */
     @Test
     public void equalsTest() {
         assertTrue(strategy.equals(strategy.copy()));
     }
 
+    /**
+     * A copy must have the same hash code as the original one.
+     */
     @Test
     public void hashcodeTest() {
         assertEquals(strategy.hashCode(), strategy.copy().hashCode());
     }
 
+    /**
+     * A copy of the instance is equals to the instance being copied.
+     */
     @Test
     public void copyTest() {
         assertEquals(strategy, strategy.copy());
