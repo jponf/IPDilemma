@@ -66,6 +66,24 @@ public class MajorityRuleStrategyTest {
     }
 
     /**
+     * Basic Test: Testing if our strategy will give us a correct copy of
+     *             itself.
+     */
+    @Test
+    public void testEquals() {
+        assertTrue(strategy.equals(strategy.copy()));
+    }
+
+    /**
+     * Basic Test: Testing if a copy will return the same hash code as the
+     *             as the original instance.
+     */
+    @Test
+    public void testHashcode() {
+        assertEquals(strategy.hashCode(), strategy.copy().hashCode());
+    }
+
+    /**
      * Basic Test: Testing if our strategy will return  a correct copy of
      *             itself.
      */

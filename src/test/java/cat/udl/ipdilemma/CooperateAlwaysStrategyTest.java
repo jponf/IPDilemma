@@ -6,14 +6,14 @@ import static org.junit.Assert.*;
 
 public class CooperateAlwaysStrategyTest {
 
-    CooperateAlwaysStrategy coopstrategy;
+    CooperateAlwaysStrategy strategy;
 
     /**
      * Sets up a cooperate strategy before running the tests.
      */
     @Before
     public void setUp() {
-        coopstrategy = new CooperateAlwaysStrategy();
+        strategy = new CooperateAlwaysStrategy();
     }
 
     /**
@@ -21,7 +21,7 @@ public class CooperateAlwaysStrategyTest {
      */
     @Test
     public void testGetNextActionOnce() {
-        assertEquals(PlayerAction.COOPERATION, coopstrategy.getNextAction());
+        assertEquals(PlayerAction.COOPERATION, strategy.getNextAction());
     }
 
     /**
@@ -29,8 +29,8 @@ public class CooperateAlwaysStrategyTest {
      */
     @Test
     public void testGetNextActionMoreThanOnce() {
-        PlayerAction pa = coopstrategy.getNextAction();
-        pa = coopstrategy.getNextAction();
+        PlayerAction pa = strategy.getNextAction();
+        pa = strategy.getNextAction();
         assertEquals(PlayerAction.COOPERATION, pa);
     }
 
@@ -39,6 +39,6 @@ public class CooperateAlwaysStrategyTest {
      */
     @Test
     public void testCopy() {
-        assertEquals(coopstrategy, coopstrategy.copy());
+        assertEquals(strategy, strategy.copy());
     }
 }
