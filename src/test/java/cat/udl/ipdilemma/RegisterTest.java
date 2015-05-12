@@ -39,7 +39,10 @@ public class RegisterTest {
     }
 
     /**
-     * Test of getRegister method, of class Register.
+     * Bad Data Test: Testing if the register will be nullable when he is 
+     *                uninitialized.
+     * Reason: To test the result of getRegister method and if it follow 
+     *         the singleton pattern.
      */
     @Test
     public void testGetRegister() {
@@ -47,7 +50,9 @@ public class RegisterTest {
     }
 
     /**
-     * Test of addStrategy method, of class Register.
+     * Bad Data Test: Testing if the register will be able to find a strategy 
+     *                that it has been loaded.
+     * Reson: To test the result of addStrategy method and getStrategy method.
      */
     @Test
     public void testAddStrategy() throws CurrentlyExistingException,
@@ -57,9 +62,25 @@ public class RegisterTest {
         reg.addStrategy("dummy", new DummyStrategy());
         assertEquals(DummyStrategy.class, reg.getStrategy("dummy").getClass());
     }
-
+    
     /**
-     * Test of removeStrategy method, of class Register.
+     * Bad Data Test: Testing if the register will be able to find a strategy 
+     *                that it hasn't been loaded.
+     * Reson: To test the result of getStrategy method when it have to find 
+     *        a nonexistent strategy.
+     */
+    @Test (expected = NonExistingException.class)
+    public void testGetStrategy() throws NonExistingException {
+        Register reg = Register.getRegister();
+        // There is no strategy, it must raise and exception
+        reg.getStrategy("no_one");
+    }
+    
+    /**
+     * Bad Data Test: Testing if the register will be able to remove correctly a 
+     *                strategy.
+     * Reson: To test the result of getStrategy method when it have to find 
+     *        a existent strategy.
      */
     @Test (expected = NonExistingException.class)
     public void testRemoveStrategy() throws CurrentlyExistingException,
@@ -70,15 +91,5 @@ public class RegisterTest {
         reg.addStrategy("dummy", new DummyStrategy());
         reg.removeStrategy("dummy");        
         reg.getStrategy("dummy");   // If remove worked, now it will throw an exception
-    }
-
-    /**
-     * Test of getStrategy method, of class Register.
-     */
-    @Test (expected = NonExistingException.class)
-    public void testGetStrategy() throws NonExistingException {
-        Register reg = Register.getRegister();
-        // There is no strategy, it must raise and exception
-        reg.getStrategy("no_one");
     }
 }
