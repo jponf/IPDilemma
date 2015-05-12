@@ -17,7 +17,8 @@ public class RandomStrategyTest {
     }
 
     /**
-     * Test if with a fixed max tries, the strategy will eventually return the action DEFECTION
+     * Basic Test: Test if with a fixed max tries, the strategy will eventually return the action DEFECTION
+     * Reason: To test the result of getNextAction method could be defection.
      */
     @Test
     public void getNextActionReturnsDEFECTIONTest() {
@@ -31,7 +32,8 @@ public class RandomStrategyTest {
     }
 
     /**
-     * Test if with a fixed max tries, the strategy will eventually return the action COOPERATION
+     * Basic Test: Test if with a fixed max tries, the strategy will eventually return the action DEFECTION
+     * Reason: To test the result of getNextAction method could be defection.
      */
     @Test
     public void getNextActionReturnsCOOPERATIONTest() {
@@ -44,6 +46,10 @@ public class RandomStrategyTest {
         assertTrue(last_was_cooperation);
     }
 
+    /**
+     * Basic Test: Testing if our strategy will return a correct copy of itself.
+     * Reson: To test the result of copy method.
+     */
     @Test
     public void copyTest() {
         assertEquals(strategy, strategy.copy());
