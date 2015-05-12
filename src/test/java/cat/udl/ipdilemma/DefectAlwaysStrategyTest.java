@@ -15,6 +15,7 @@ public class DefectAlwaysStrategyTest {
 
     /**
      * Basic Test: Testing if strategy will betray its partner once.
+     * Reason: To test the result of getNextAction method once.
      */
     @Test
     public void testGetNextActionOnce() {
@@ -23,6 +24,7 @@ public class DefectAlwaysStrategyTest {
 
     /**
      * Basic Test: Testing if strategy will betray its partner more than once.
+     * Reason: To test the result of getNextAction method more than once.
      */
     @Test
     public void testGetNextActionMoreThanOnce() {
@@ -33,6 +35,7 @@ public class DefectAlwaysStrategyTest {
 
     /**
      * Basic Test: Testing if our strategy will return a correct copy of itself.
+     * Reason: To test the result of copy method.
      */
     @Test
     public void testCopy() {

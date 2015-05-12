@@ -34,6 +34,8 @@ public class MajorityRuleStrategyTest {
 
     /**
      * Basic Test: Since 2/3 are defection the next action should be defection.
+     * Reason: To test once the result of getNextAction method in a situation 
+     *         where nºdefections > nºcooperations.
      */
     @Test
     public void testGetNextActionOnce() {
@@ -43,6 +45,8 @@ public class MajorityRuleStrategyTest {
     /**
      * Basic Test: Since 2/3 are always defection the next action should be
      *             always defection.
+     * Reason: To test more than once the result of getNextAction method in a 
+     *         situation where nºdefections > nºcooperations.
      */
     @Test
     public void testGetNextActionMoreThanOnce() {
@@ -54,6 +58,8 @@ public class MajorityRuleStrategyTest {
     /**
      * Basic Test: Testing if our strategy will be cooperate if he has a nice
      *             partner (1DEFECTION, 2 COOPERATE).
+     * Reason: To test the result of getNextAction method in a situation where 
+     *         nºdefections > nºcooperations.
      */
     @Test
     public void testNotifyRivalAction() {
@@ -68,6 +74,7 @@ public class MajorityRuleStrategyTest {
     /**
      * Basic Test: Testing if our strategy will give us a correct copy of
      *             itself.
+     * Reason: To test the result of equals method.
      */
     @Test
     public void testEquals() {
@@ -77,6 +84,7 @@ public class MajorityRuleStrategyTest {
     /**
      * Basic Test: Testing if a copy will return the same hash code as the
      *             as the original instance.
+     * Reason: To test the result of hasCode method.
      */
     @Test
     public void testHashcode() {
@@ -86,6 +94,7 @@ public class MajorityRuleStrategyTest {
     /**
      * Basic Test: Testing if our strategy will return  a correct copy of
      *             itself.
+     * Reason: To test the result of copy method.
      */
     @Test
     public void testCopy() {

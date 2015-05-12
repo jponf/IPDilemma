@@ -29,6 +29,8 @@ public class PlayObserverTest implements Observer {
 
 	/**
 	 * Basic Test: Testing if observer updates once.
+	 * Reason: To test once the result of notifyObservers method
+     *         and setChanged method.
 	 */
 	@Test
 	public void observerUpdateOnceTest() {
@@ -41,6 +43,8 @@ public class PlayObserverTest implements Observer {
 
 	/**
 	 * Basic Test: Testing if observer updates twice.
+     * Reason: To test once the result of notifyObservers method
+     *         and setChanged method.
 	 */
 	@Test
 	public void observerUpdateTwiceTest() {

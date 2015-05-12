@@ -38,6 +38,7 @@ public class PlayerTest {
 
     /**
      * Basic Test: Test of nextAction method, of class Player.
+     * Reason: Test the result of netxAction method, of class Player.
      */
     @Test
     public void testPerformAction() {
@@ -46,6 +47,7 @@ public class PlayerTest {
 
     /**
      * Basic Test: Test of notifyRivalAction method, of class Player.
+     * Reason: Test the result of notifyRivalAction method, of class Player.
      */
     @Test
     public void testNotifyRivalAction() {

@@ -21,8 +21,10 @@ public class MoreUsedStrategyTest {
     }
 
     /**
-     * Basic Test: Since it is configured so as COOPERATION is the more used strategy
-     * it should return COOPERATION.
+     * Basic Test: Since it is configured so as COOPERATION is the more used 
+     *             strategy it should return COOPERATION.
+     * Reason: To test once the result of getNextAction method in a situation 
+     *         where nºcooperations > nºdefections.
      */
     @Test
     public void getNextActionOnceTest() {
@@ -32,6 +34,8 @@ public class MoreUsedStrategyTest {
     /**
      * Basic Test: Requesting the next action more than once, without modifying
      *             the rival's last action, shall return the same result.
+     * Reason: To test more than once the result of getNextAction method in a 
+     *         situation where nºcooperations > nºdefections.
      */
     @Test
     public void getNextActionMoreThanOnceTest() {
@@ -43,6 +47,9 @@ public class MoreUsedStrategyTest {
 
     /**
      * Basic Test: Notifying the same action does not have to change the result.
+     * Reason: To test more than once the result of notifyRival method with 
+     *         the getNextAction method in a situation where 
+     *         nºcooperations > nºdefections.
      */
     @Test
     public void notifyRivalSameActionTest() {
@@ -54,7 +61,10 @@ public class MoreUsedStrategyTest {
 
     /**
      * Basic Test: Testing if our strategy will betray, if rival usually betray
-     * him.
+     *             him.
+     * Reason: To test more than once the result of notifyRival method with 
+     *         the getNextAction method in a situation where 
+     *         nºcooperations < nºdefections.
      */
     @Test
     public void notifyRivalDifferentActionTest() {
@@ -67,6 +77,7 @@ public class MoreUsedStrategyTest {
     /**
      * Basic Test: Testing if our strategy will give us a correct copy of
      *             itself.
+     * Reason: To test the result of equals method.
      */
     @Test
     public void equalsTest() {
@@ -76,6 +87,7 @@ public class MoreUsedStrategyTest {
     /**
      * Basic Test: Testing if a copy will return the same hash code as the
      *             as the original instance.
+     * Reason: To test the result of hashCode method.
      */
     @Test
     public void hashcodeTest() {
@@ -85,6 +97,7 @@ public class MoreUsedStrategyTest {
     /**
      * Basic Test: Testing if our strategy will be return a correct copy of
      *             itself.
+     * Reason: To test the result of copy method.
      */
     @Test
     public void copyTest() {

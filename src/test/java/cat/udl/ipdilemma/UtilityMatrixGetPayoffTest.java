@@ -20,7 +20,10 @@ public class UtilityMatrixGetPayoffTest {
     }
 
     /**
-     * Flow Control Test: Testing if both players cooperate, they will have a prize(R)
+     * Flow Control Test: Testing if both players cooperate, they will have 
+     *                    a prize(R).
+     * Reason: To test the result of getPayoff method in a situation where 
+     *         A and B cooperate.
      *
      *             |        B coopera       |    B deserta           |
      * ------------|------------------------|------------------------|
@@ -43,7 +46,10 @@ public class UtilityMatrixGetPayoffTest {
 
     /**
      * Flow Control Test: Testing if player A cooperates and player B betrays,
-     * Player A will be a loser (S) and Player B will be a traitor(T).
+     *                    Player A will be a loser (S) and Player B will be 
+     *                    a traitor(T).
+     * Reason: To test the result of getPayoff method in a situation where 
+     *         A cooperates and B betrays.
      *
      *             |        B coopera       |    B deserta           |
      * ------------|------------------------|------------------------|
@@ -66,7 +72,10 @@ public class UtilityMatrixGetPayoffTest {
 
     /**
      * Flow Control Test: Testing if player B cooperates and player A betrays,
-     * Player B will be a loser (S) and Player A will be a traitor(T).
+     *                    Player B will be a loser (S) and Player A will be 
+     *                    a traitor(T).
+     * Reason: To test the result of getPayoff method in a situation where 
+     *         A betrays and B cooperates.
      *             |        B coopera       |    B deserta           |
      * ------------|------------------------|------------------------|
      *             | Presoner A | PresonerB | Presoner A | PresonerB |
@@ -87,8 +96,10 @@ public class UtilityMatrixGetPayoffTest {
     }
 
     /**
-     * Flow Control Test: Testing if both players betray themselves, they will be punished(P).
-     *
+     * Flow Control Test: Testing if both players betray themselves, 
+     *                    they will be punished(P).
+     * Reason: To test the result of getPayoff method in a situation where 
+     *         A and B betray themselves.
      *             |        B coopera       |    B deserta           |
      * ------------|------------------------|------------------------|
      *             | Presoner A | PresonerB | Presoner A | PresonerB |
@@ -100,7 +111,6 @@ public class UtilityMatrixGetPayoffTest {
      *             |     T=3    |    S=0    |    P=1     |    P=1    |
      * ------------|------------|-----------|------------|-----------|
      */
-
     @Test
     public void testGetPayoffADefectionBDefection() {
         Pair<Integer> expected = new Pair<>(p, p);
