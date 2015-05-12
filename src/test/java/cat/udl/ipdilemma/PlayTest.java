@@ -29,7 +29,11 @@ public class PlayTest {
         }
 
     }
-
+    
+    /**
+     * Bad Data Test: Testing if it's possible to play the rounds number.
+     * Reason: To test the result of constructor method when nºrounds <= 0.
+     */
     @Test(expected = IllegalArgumentException.class)
     public void tooFewRoundsTest() {
 
@@ -40,7 +44,11 @@ public class PlayTest {
 
         Play game = new Play(-1, playerA, playerB, umatrix);
     }
-
+    
+    /**
+     * Bad Data Test: Testing if it's possible to play with only the player B.
+     * Reason: To test the result of constructor method when player A is null.
+     */
     @Test(expected = IllegalArgumentException.class)
     public void nullPlayerATest() {
 
@@ -52,6 +60,10 @@ public class PlayTest {
         Play game = new Play(0, playerA, playerB, umatrix);
     }
 
+    /**
+     * Bad Data Test: Testing if it's possible to play with only the player A.
+     * Reason: To test the result of constructor method when the player B is null.
+     */
     @Test(expected = IllegalArgumentException.class)
     public void nullPlayerBTest() {
 
@@ -63,6 +75,11 @@ public class PlayTest {
         Play game = new Play(0, playerA, playerB, umatrix);
     }
 
+    /**
+     * Bad Data Test: Testing if it's possible to play without utility matrix.
+     * Reason: To test the result of constructor method when the utility matrix
+     *         is null.
+     */
     @Test(expected = IllegalArgumentException.class)
     public void nullUMatrixTest() {
 
@@ -73,7 +90,11 @@ public class PlayTest {
 
         Play game = new Play(0, playerA, playerB, umatrix);
     }
-
+    /**
+     * Basic Test: Testing if the play class is able to correctly calculate the 
+     *             score from player A in the first round.
+     * Reason: To test once the result of getPlayerAScore method.
+     */
     @Test
     public void playerAScoreAfterStepTest() {
 
@@ -90,6 +111,11 @@ public class PlayTest {
         assertEquals(playerAScore, R);
     }
 
+    /**
+     * Basic Test: Testing if the play class is able to correctly calculate the 
+     *             score from player B in the first round.
+     * Reason: To test once the result of getPlayerBScore method.
+     */
     @Test
     public void playerBScoreAfterStepTest() {
 
@@ -106,6 +132,11 @@ public class PlayTest {
         assertEquals(playerBScore, R);
     }
 
+    /**
+     * Basic Test: Testing if the play class is able to correctly calculate the 
+     *             scores from player A.
+     * Reason: To test more than once the result of getPlayerAScore method.
+     */
     @Test
     public void playerAScoreAfterRunTest() {
 
@@ -122,6 +153,11 @@ public class PlayTest {
         assertEquals(playerAScore, R * MAX_STEPS);
     }
 
+    /**
+     * Basic Test: Testing if the play class is able to correctly calculate the 
+     *             scores from player A.
+     * Reason: To test more than once the result of getPlayerAScore method.
+     */
     @Test
     public void playerBScoreAfterRunTest() {
 
@@ -137,7 +173,12 @@ public class PlayTest {
         int playerBScore = game.getPlayerBScore();
         assertEquals(playerBScore, R * MAX_STEPS);
     }
-
+    
+    /**
+     * Basic Test: Testing if the play class is able to correctly calculate the 
+     *             scores from player A and B in the first round.
+     * Reason: To test the result of runRound method.
+     */
     @Test
     public void totalScoreAfterStepTest() {
 
@@ -155,6 +196,11 @@ public class PlayTest {
         assertEquals(score, expectedScore);
     }
 
+    /**
+     * Basic Test: Testing if the play class is able to correctly calculate 
+     *             the scores from player A and B at the end of a game.
+     * Reason: To test the result of runAll method.
+     */
     @Test
     public void totalScoreAfterRunTest() {
 
@@ -172,6 +218,12 @@ public class PlayTest {
         assertEquals(score, expectedScore);
     }
 
+    /**
+     * Flow Control Test: Testing if the play class will know if it has more 
+     *             rounds to play
+     * Reason: To test the result of hasMoreRounds method when 
+     *         the rounds executed are less than the rounds to execute.
+     */
     @Test
     public void hasMoreRoundsTest() {
 
@@ -184,7 +236,12 @@ public class PlayTest {
 
         assertTrue(game.hasMoreRounds());
     }
-
+    /**
+     * Flow Control Test: Testing if the play class will know if it hasn't more 
+     *             rounds to play
+     * Reason: To test the result of hasMoreRounds method when 
+     *         the rounds executed are equals to the rounds to execute.
+     */
     @Test
     public void notHasMoreRoundsTest() {
 
