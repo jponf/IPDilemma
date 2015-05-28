@@ -119,6 +119,11 @@ public class MajorityRuleStrategy implements PlayerStrategy {
         return new MajorityRuleStrategy(this);
     }
 
+    @Override
+    public String getName() {
+        return "Majority Rule";
+    }
+
     // Used in tests
     @Override
     public boolean equals(Object obj) {

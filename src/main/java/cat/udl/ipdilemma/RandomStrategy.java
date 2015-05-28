@@ -38,4 +38,8 @@ public class RandomStrategy implements PlayerStrategy {
         return this;
     }
 
+    @Override
+    public String getName() {
+        return "Random";
+    }
 }

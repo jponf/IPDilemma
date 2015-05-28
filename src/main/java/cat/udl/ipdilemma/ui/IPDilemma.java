@@ -28,11 +28,11 @@ public class IPDilemma {
         try {
             Register reg = Register.getRegister();
                     
-            reg.addStrategy("Cooperate Always", new CooperateAlwaysStrategy());
-            reg.addStrategy("Defect Always", new DefectAlwaysStrategy());
-            reg.addStrategy("Random", new RandomStrategy());
-            reg.addStrategy("More Used", new MoreUsedStrategy());
-            reg.addStrategy("Majority Rule", new MajorityRuleStrategy());
+            reg.addStrategy(new CooperateAlwaysStrategy());
+            reg.addStrategy(new DefectAlwaysStrategy());
+            reg.addStrategy(new RandomStrategy());
+            reg.addStrategy(new MoreUsedStrategy());
+            reg.addStrategy(new MajorityRuleStrategy());
         } catch (CurrentlyExistingException ex) {
             Logger.getLogger(IPDilemma.class.getName()).log(Level.SEVERE, null, ex);
         }

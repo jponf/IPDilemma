@@ -69,6 +69,11 @@ public class MoreUsedStrategy implements PlayerStrategy {
         return new MoreUsedStrategy(this);
     }
 
+    @Override
+    public String getName() {
+        return "More Used";
+    }
+
     // Used in tests
     @Override
     public boolean equals(Object obj) {

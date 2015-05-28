@@ -28,4 +28,9 @@ public class CooperateAlwaysStrategy implements PlayerStrategy {
         // This class is "immutable", return this is acceptable as a deep copy
         return this;
     }
+
+    @Override
+    public String getName() {
+        return "Cooperate Always";
+    }
 }
