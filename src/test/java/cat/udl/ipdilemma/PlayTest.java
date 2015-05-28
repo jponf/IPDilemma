@@ -28,6 +28,10 @@ public class PlayTest {
             throw new UnsupportedOperationException("Not supported yet.");
         }
 
+        @Override
+        public String getName() {
+            return "Dummy";
+        }
     }
     
     /**

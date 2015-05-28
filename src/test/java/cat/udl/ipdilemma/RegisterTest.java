@@ -25,6 +25,11 @@ public class RegisterTest {
         public PlayerStrategy copy() {
             return this;    // Used by getStrategy 
         }
+
+        @Override
+        public String getName() {
+            return "Dummy";
+        }
         
     }
 
@@ -59,7 +64,7 @@ public class RegisterTest {
         NonExistingException {
         Register reg = Register.getRegister();
         
-        reg.addStrategy("dummy", new DummyStrategy());
+        reg.addStrategy(new DummyStrategy());
         assertEquals(DummyStrategy.class, reg.getStrategy("dummy").getClass());
     }
     
@@ -88,7 +93,7 @@ public class RegisterTest {
         Register reg = Register.getRegister();
         
         // Tested in testAddStrategy :)
-        reg.addStrategy("dummy", new DummyStrategy());
+        reg.addStrategy(new DummyStrategy());
         reg.removeStrategy("dummy");        
         reg.getStrategy("dummy");   // If remove worked, now it will throw an exception
     }

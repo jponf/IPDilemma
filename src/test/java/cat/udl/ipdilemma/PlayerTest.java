@@ -26,6 +26,11 @@ public class PlayerTest {
         public PlayerStrategy copy() {
             throw new UnsupportedOperationException("Not used");
         }
+
+        @Override
+        public String getName() {
+            return "Dummy";
+        }
         
     }
     
