@@ -1,0 +1,19 @@
+Utility Matrix -> {T: 4; R: 3; P: 2; S:1}
+Player A Strategy: Cooperate Always
+Player B Strategy: Defect Always
+
+Round 1
+	Player A { action: COOPERATION, score: 1}
+	Player B { action: DEFECTION, score: 4}
+Round 2
+	Player A { action: COOPERATION, score: 2}
+	Player B { action: DEFECTION, score: 8}
+Round 3
+	Player A { action: COOPERATION, score: 3}
+	Player B { action: DEFECTION, score: 12}
+Round 4
+	Player A { action: COOPERATION, score: 4}
+	Player B { action: DEFECTION, score: 16}
+Round 5
+	Player A { action: COOPERATION, score: 5}
+	Player B { action: DEFECTION, score: 20}

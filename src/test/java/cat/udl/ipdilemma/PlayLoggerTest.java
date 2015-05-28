@@ -1,10 +1,12 @@
 package cat.udl.ipdilemma;
 
 import junit.framework.Assert;
+import org.apache.commons.io.FileUtils;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.io.File;
+import java.io.IOException;
 
 import static org.junit.Assert.*;
 
@@ -12,28 +14,27 @@ import static org.junit.Assert.*;
  *
  */
 public class PlayLoggerTest {
-    private static final File dir = new File("tmp");
 
     @Before
-    public void setUp()
-    {
+    public void setUp() {
+        PlayBuilder pbuilder = new PlayBuilder();
+        pbuilder.setUtilityMatrix(4, 3, 2, 1);
+        pbuilder.setNumberOfRounds(5);
+        pbuilder.setPlayerAStrategy(new CooperateAlwaysStrategy());
+        pbuilder.setPlayerBStrategy(new DefectAlwaysStrategy());
+        pbuilder.enableLogging();
 
+        pbuilder.create().runAll();
     }
 
     @Test
-    public void testHeaders()
-    {
+    public void testLogFile() throws IOException {
+
+
         final File expected = new File (PlayLoggerTest.class.getResource(
-                "/test/resources/header.txt").getFile());
-        final File output   = new File ("");
+                "/full_log.txt").getFile());
+        final File output = new File ("play_log.txt");
 
-        Assert.assertEquals(expected, output);
+        Assert.assertEquals(FileUtils.readLines(expected), FileUtils.readLines(output));
     }
-
-    @Test
-    public void testFiles()
-    {
-
-    }
-
 }

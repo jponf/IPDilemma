@@ -21,7 +21,7 @@ public class PlayBuilder {
     }
 
     /**
-     * Set up the strategy for player A
+     * Set up the strategy for player A.
      *
      * @param name Strategy's name
      * @throws NonExistingException If the given name doesn't belong to a
@@ -32,7 +32,16 @@ public class PlayBuilder {
     }
 
     /**
-     * Set up the strategy for player B
+     * Set up the strategy for player A.
+     *
+     * @param playerStrategy The player strategy.
+     */
+    public void setPlayerAStrategy(PlayerStrategy playerStrategy) {
+        this.playerA = new Player(playerStrategy);
+    }
+
+    /**
+     * Set up the strategy for player B.
      *
      * @param name Strategy's name
      * @throws NonExistingException If the given name doesn't belong to a
@@ -40,6 +49,15 @@ public class PlayBuilder {
      */
     public void setPlayerBStrategy(String name) throws NonExistingException {
         this.playerB = new Player(name);
+    }
+
+    /**
+     * Set up the strategy for player B.
+     *
+     * @param playerStrategy The player strategy.
+     */
+    public void setPlayerBStrategy(PlayerStrategy playerStrategy) {
+        this.playerB = new Player(playerStrategy);
     }
 
     /**

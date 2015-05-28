@@ -65,7 +65,7 @@ public class RegisterTest {
         Register reg = Register.getRegister();
         
         reg.addStrategy(new DummyStrategy());
-        assertEquals(DummyStrategy.class, reg.getStrategy("dummy").getClass());
+        assertEquals(DummyStrategy.class, reg.getStrategy("Dummy").getClass());
     }
     
     /**

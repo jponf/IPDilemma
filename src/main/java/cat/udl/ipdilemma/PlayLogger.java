@@ -20,9 +20,9 @@ public class PlayLogger implements Observer {
     }
 
     public void initializeLog(UtilityMatrix u, Player pa, Player pb) {
-        log.append("Utility Matrix:").append('\n').append(u.toString()).append('\n');
+        log.append("Utility Matrix -> {").append(u.toString()).append("}\n");
         log.append("Player A Strategy: ").append(pa.getStrategyName()).append('\n');
-        log.append("Player B Strategy: ").append(pb.getStrategyName()).append('\n');
+        log.append("Player B Strategy: ").append(pb.getStrategyName()).append("\n\n");
 
         roundNum = 0;
     }

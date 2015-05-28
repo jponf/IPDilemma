@@ -88,6 +88,6 @@ public class UtilityMatrix {
         int S = getPayoff(PlayerAction.COOPERATION, PlayerAction.DEFECTION).getFirst();
         int P = getPayoff(PlayerAction.DEFECTION,   PlayerAction.DEFECTION).getFirst();
         int R = getPayoff(PlayerAction.COOPERATION, PlayerAction.COOPERATION).getFirst();
-        return " T: "+T+ "\tR: "+R+"\tP:"+P+"\tS:"+S+"\n";
+        return "T: " + T + "; R: " + R + "; P: " + P + "; S:" + S;
     }
 }
