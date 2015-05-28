@@ -81,4 +81,13 @@ public class UtilityMatrix {
             }
         }
     }
+
+    @Override
+    public String toString(){
+        int T = getPayoff(PlayerAction.COOPERATION, PlayerAction.DEFECTION).getSecond();
+        int S = getPayoff(PlayerAction.COOPERATION, PlayerAction.DEFECTION).getFirst();
+        int P = getPayoff(PlayerAction.DEFECTION,   PlayerAction.DEFECTION).getFirst();
+        int R = getPayoff(PlayerAction.COOPERATION, PlayerAction.COOPERATION).getFirst();
+        return " T: "+T+ "\tR: "+R+"\tP:"+P+"\tS:"+S+"\n";
+    }
 }

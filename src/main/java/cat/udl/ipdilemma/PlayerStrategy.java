@@ -20,9 +20,12 @@ public interface PlayerStrategy {
     public void notifyRivalAction(PlayerAction pa);
     
     /**
-     * 
      * @return A deep copy of this PlayerStrategy
      */
     public PlayerStrategy copy();
-    
+
+    /**
+     * @return The strategy identifier/name.
+     */
+    public String getName();
 }

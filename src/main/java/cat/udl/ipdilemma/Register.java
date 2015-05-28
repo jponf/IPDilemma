@@ -34,20 +34,19 @@ public class Register {
     /**
      * Add the specified strategy associated to the given name
      *
-     * @param name
      * @param ps
      *
      * @throws CurrentlyExistingException If the name is already used
      */
-    public void addStrategy(String name, PlayerStrategy ps)
+    public void addStrategy(PlayerStrategy ps)
             throws CurrentlyExistingException {
 
-        if (strategiesmap.containsKey(name)) {
+        if (strategiesmap.containsKey(ps.getName())) {
             throw new CurrentlyExistingException(
-                    "There are another strategy under the name: " + name
+                    "There are another strategy under the name: " + ps.getName()
                     + ", remove it before add the new one");
         }
-        strategiesmap.put(name, ps);
+        strategiesmap.put(ps.getName(), ps);
     }
 
     /**
