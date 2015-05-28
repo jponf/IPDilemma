@@ -41,6 +41,11 @@ public class Player {
     public void notifyRivalAction(PlayerAction action){
         strategy.notifyRivalAction(action);
     }
-    
-    
+
+    /**
+     * @return The strategy name used by this player.
+     */
+    public String getStrategyName() {
+        return strategy.getName();
+    }
 }

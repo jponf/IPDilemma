@@ -8,7 +8,18 @@ public class PlayBuilder {
     Player playerB;
     UtilityMatrix umatrix;
     int nrounds;
-    
+    boolean logginEnable;
+
+    /**
+     * Initializes the builder attributes to their default values.
+     */
+    public PlayBuilder() {
+        playerA = playerB = null;
+        umatrix = null;
+        nrounds = 0;
+        logginEnable = false;
+    }
+
     /**
      * Set up the strategy for player A
      *
@@ -62,17 +73,39 @@ public class PlayBuilder {
     
     /**
      * @return A new instance of play with the specified configuration
-     * @throws IllegalStateException If there are not enough data to create the
-     *                                  Play
+     * @throws IllegalStateException If there are not enough data to create the Play
      */
     public Play create() {
        
-        if(hasPlayers() && hasUtilityMatrix() && hasRounds()) {        
-            return new Play(nrounds, playerA, playerB, umatrix);
+        if(hasPlayers() && hasUtilityMatrix() && hasRounds()) {
+            Play play = new Play(nrounds, playerA, playerB, umatrix);
+            if(logginEnable){
+                PlayLogger logger = new PlayLogger();
+                logger.initializeLog(umatrix, playerA, playerB);
+                play.addObserver(logger);
+            }
+            return play;
         }
         throw new IllegalStateException("Lack of information to build the Play");
     }
-    
+
+    /**
+     * Enables the creation of the play log.
+     * This method is only effective before calling create().
+     */
+    public void enableLogging() {
+        this.logginEnable = true;
+    }
+
+    /**
+     * Disables the creation of the play log.
+     * This method is only effective before calling create().
+     */
+    public void dissableLogging() {
+        this.logginEnable = false;
+    }
+
+
     /**
      * 
      * @return True if players were set

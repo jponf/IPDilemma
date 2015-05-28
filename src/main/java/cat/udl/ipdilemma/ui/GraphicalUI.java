@@ -4,10 +4,7 @@
  */
 package cat.udl.ipdilemma.ui;
 
-import cat.udl.ipdilemma.Play;
-import cat.udl.ipdilemma.PlayBuilder;
-import cat.udl.ipdilemma.Register;
-import cat.udl.ipdilemma.RoundInfo;
+import cat.udl.ipdilemma.*;
 import cat.udl.ipdilemma.exceptions.NonExistingException;
 import java.util.Enumeration;
 import java.util.Observable;
@@ -289,6 +286,7 @@ public class GraphicalUI extends javax.swing.JFrame implements Observer {
 	 */
     private void set_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_set_buttonActionPerformed
 		PlayBuilder builder = new PlayBuilder();
+        builder.enableLogging();
 
 		boolean good_data = true;
 		good_data &= setUtilityMatrix(builder);
