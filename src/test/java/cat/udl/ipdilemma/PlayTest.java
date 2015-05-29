@@ -259,6 +259,7 @@ public class PlayTest {
         }
 
         assertTrue("# rounds not exhausted", i == MAX_STEPS);
-        assertFalse("Rounds exhausted but not properly notified", game.hasMoreRounds());
+        assertFalse("Rounds exhausted but not properly notified",
+                game.hasMoreRounds());
     }
 }

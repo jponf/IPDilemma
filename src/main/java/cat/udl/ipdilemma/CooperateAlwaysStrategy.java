@@ -14,10 +14,10 @@ public class CooperateAlwaysStrategy implements PlayerStrategy {
         return PlayerAction.COOPERATION;
     }
 
-	/**
-	 * It's a blind strategy, this method is blank
-	 * @param pa 
-	 */
+    /**
+     * It's a blind strategy, this method is blank
+     * @param pa 
+     */
     @Override
     public void notifyRivalAction(PlayerAction pa) {
         
