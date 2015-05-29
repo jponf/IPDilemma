@@ -337,24 +337,24 @@ public class GraphicalUI extends javax.swing.JFrame implements Observer {
 	 */
 	@Override
 	public void update(Observable o, Object arg) {
-		if (arg != null && arg.getClass() == RoundInfo.class) {
-			RoundInfo rinfo = (RoundInfo) arg;
+		if (arg != null && arg.getClass().equals(RoundInfo.class)) {
+			RoundInfo roundInfo = (RoundInfo) arg;
 
 			DefaultTableModel dm = (DefaultTableModel) result_table.getModel();
 			dm.addRow(new Object[]{
-				String.valueOf(rinfo.getRoundNumber()),
-				rinfo.getPlayerAAction().toString(),
-				String.valueOf(rinfo.getPlayerAScore()),
-				rinfo.getPlayerBAction().toString(),
-				String.valueOf(rinfo.getPlayerBScore())
+				String.valueOf(roundInfo.getRoundNumber()),
+				roundInfo.getPlayerAAction().toString(),
+				String.valueOf(roundInfo.getPlayerAScore()),
+				roundInfo.getPlayerBAction().toString(),
+				String.valueOf(roundInfo.getPlayerBScore())
 			});
 
 			if (!game.hasMoreRounds()) {
 				message_textarea.append("Final Socres\n");
 				message_textarea.append("Player A: "
-						+ String.valueOf(rinfo.getPlayerAScore()) + "\n");
+						+ String.valueOf(roundInfo.getPlayerAScore()) + "\n");
 				message_textarea.append("Player B: "
-						+ String.valueOf(rinfo.getPlayerBScore()) + "\n");
+						+ String.valueOf(roundInfo.getPlayerBScore()) + "\n");
 			}
 
 		}
