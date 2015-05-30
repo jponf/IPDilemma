@@ -30,7 +30,7 @@ public class UtilityMatrix {
         if (t <= r || r <= p || p <= s) {
             throw new IllegalArgumentException("Violation of condition: "
                     + "T > R > P > S");
-        } else if ((float) r <= (float) (t + s) / 2.0f) {
+        } else if (r <= (t + s) / 2.0f) {
             throw new IllegalArgumentException("Violation of condition: "
                     + "R > (T + S) / 2");
         }
