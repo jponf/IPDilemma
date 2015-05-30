@@ -52,12 +52,11 @@ public final class Pair<T> {
 	 */
     @Override
     public boolean equals(Object obj) {
-        if (obj == null) {
+        if (obj == null || getClass() != obj.getClass()) {
             return false;
         }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
+
+        @SuppressWarnings("unchecked")
         final Pair<T> other = (Pair<T>) obj;
         return first.equals(other.first) && second.equals(other.second);
     }
