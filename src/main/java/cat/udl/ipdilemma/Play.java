@@ -118,7 +118,7 @@ public class Play extends Observable {
      * @return A Pair of Integer with each of the scores.
      */
     public Pair<Integer> getScore() {
-        return new Pair(getPlayerAScore(), getPlayerBScore());
+        return new Pair<>(getPlayerAScore(), getPlayerBScore());
     }
 
     /**
