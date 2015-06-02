@@ -4,6 +4,9 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -12,22 +15,44 @@ import java.util.Observer;
  * a play as more rounds are performed.
  */
 public class PlayLogger implements Observer {
+    private static int count = 0;
 
+    File filename;
     FileWriter fileWriter;
     PrintWriter outputFile;
     int roundNum;
 
     public PlayLogger() {
         try {
-            File file = new File("play_log.txt");
-            if (!file.exists()) {
-                file.createNewFile();
-            }
-            fileWriter = new FileWriter(file);
+            fileWriter = new FileWriter(generateFile());
             outputFile = new PrintWriter(fileWriter);
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private File generateFile() throws IOException {
+        filename = new File(generateFileName());
+        filename.createNewFile();
+        return filename;
+    }
+
+    public String getFileName(){
+        return filename.getName();
+    }
+
+    private String generateFileName()
+    {
+        String result = "PlayLog_";
+
+        DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy_HH-mm-ss");
+        Date date = new Date();
+
+        PlayLogger.count += 1;
+        if(PlayLogger.count<10)
+            result += '0';
+        result += String.format("%d_%s.log",PlayLogger.count,dateFormat.format(date));
+        return result;
     }
 
     public void initializeLog(UtilityMatrix utilityMatrix, Player playerA, Player playerB) {

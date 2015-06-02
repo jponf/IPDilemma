@@ -8,32 +8,34 @@ import org.junit.Test;
 import java.io.File;
 import java.io.IOException;
 
-import static org.junit.Assert.*;
-
 /**
  *
  */
 public class PlayLoggerTest {
 
+    private static PlayLogger logger;
+    private static Play play;
+
     @Before
     public void setUp() {
-        PlayBuilder pbuilder = new PlayBuilder();
-        pbuilder.setUtilityMatrix(4, 3, 2, 1);
-        pbuilder.setNumberOfRounds(5);
-        pbuilder.setPlayerAStrategy(new CooperateAlwaysStrategy());
-        pbuilder.setPlayerBStrategy(new DefectAlwaysStrategy());
-        pbuilder.enableLogging();
+        UtilityMatrix utilityMatrix = new UtilityMatrix(4, 3, 2, 1);
+        Player playerA = new Player(new CooperateAlwaysStrategy());
+        Player playerB = new Player(new DefectAlwaysStrategy());
+        int numberOfRounds = 5;
 
-        pbuilder.create().runAll();
+        logger = new PlayLogger();
+        logger.initializeLog(utilityMatrix, playerA, playerB);
+        play = new Play(numberOfRounds, playerA, playerB, utilityMatrix);
+        play.addObserver(logger);
+
     }
 
     @Test
     public void testLogFile() throws IOException {
+        play.runAll();
 
-
-        final File expected = new File (PlayLoggerTest.class.getResource(
-                "/full_log.txt").getFile());
-        final File output = new File ("play_log.txt");
+        final File output   = new File (logger.getFileName());
+        final File expected = new File ("src/test/resources/full_log.txt");
 
         Assert.assertEquals(FileUtils.readLines(expected), FileUtils.readLines(output));
     }
