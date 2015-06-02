@@ -1,8 +1,9 @@
 package cat.udl.ipdilemma;
 
-import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -12,17 +13,28 @@ import java.util.Observer;
  */
 public class PlayLogger implements Observer {
 
-    StringBuilder log;
+    FileWriter fileWriter;
+    PrintWriter outputFile;
     int roundNum;
 
     public PlayLogger() {
-        log = new StringBuilder();
+        try {
+            File file = new File("play_log.txt");
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+            fileWriter = new FileWriter(file);
+            outputFile = new PrintWriter(fileWriter);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void initializeLog(UtilityMatrix utilityMatrix, Player playerA, Player playerB) {
-        log.append("Utility Matrix -> {").append(utilityMatrix.toString()).append("}\n");
-        log.append("Player A Strategy: ").append(playerA.getStrategyName()).append('\n');
-        log.append("Player B Strategy: ").append(playerB.getStrategyName()).append("\n\n");
+        outputFile.println(String.format("Utility Matrix -> {%s}", utilityMatrix.toString()));
+        outputFile.println(String.format("Player A Strategy: %s", playerA.getStrategyName()));
+        outputFile.println(String.format("Player B Strategy: %s", playerB.getStrategyName()));
+        outputFile.println();
 
         roundNum = 0;
     }
@@ -38,30 +50,32 @@ public class PlayLogger implements Observer {
             throw new IllegalArgumentException("The observed instance is not a Play.");
         }
 
-        Play play = (Play)observable;
-        RoundInfo roundInfo = (RoundInfo)data;
+        Play play = (Play) observable;
+        RoundInfo roundInfo = (RoundInfo) data;
+
         roundNum += 1;
 
-        log.append("Round ").append(roundNum).append('\n');
-        log.append('\t').append("Player A { action: ")
-                .append(roundInfo.getPlayerAAction().toString()).append(", score: ")
-                .append(roundInfo.getPlayerAScore()).append("}\n");
-        log.append('\t').append("Player B { action: ")
-                .append(roundInfo.getPlayerBAction().toString())
-                .append(", score: ").append(roundInfo.getPlayerBScore()).append("}\n");
+        outputFile.println(String.format("Round %d", roundNum));
+        outputFile.println(String.format("\tPlayer A { action: %s, score: %d}",
+                roundInfo.getPlayerAAction().toString(),
+                roundInfo.getPlayerAScore()));
+        outputFile.println(String.format("\tPlayer B { action: %s, score: %d}",
+                roundInfo.getPlayerBAction().toString(),
+                roundInfo.getPlayerBScore()));
 
         if (!play.hasMoreRounds()) {
-            print();
+            closeFile();
         }
     }
 
-    public void print() {
+    private boolean closeFile(){
         try {
-            BufferedWriter buf = new BufferedWriter(new FileWriter("play_log.txt"));
-            buf.write(log.toString());
-            buf.close();
-        } catch (IOException ex) {
-            throw new RuntimeException(ex);
+            outputFile.close();
+            fileWriter.close();
+            return true;
+        } catch (IOException e)  {
+            e.printStackTrace();
+            return false;
         }
     }
 }
