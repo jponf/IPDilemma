@@ -64,22 +64,28 @@ public class PlayLogger implements Observer {
 
     @Override
     public void update(Observable observable, Object data) {
+        if(areValidateParameters(observable,data))
+        {
+            Play play = (Play) observable;
+            RoundInfo roundInfo = (RoundInfo) data;
+
+            outputFile.print(roundInfo.toString());
+
+            if (!play.hasMoreRounds()) {
+                closeFile();
+            }
+        }
+    }
+
+    boolean areValidateParameters(Observable observable, Object data)
+    {
         if (!(data instanceof RoundInfo)) {
             throw new IllegalArgumentException(
                     "The expected data is not a valid RoundInfo object.");
-        }
-
-        if (!(observable instanceof Play)) {
+        }else if (!(observable instanceof Play)) {
             throw new IllegalArgumentException("The observed instance is not a Play.");
-        }
-
-        Play play = (Play) observable;
-        RoundInfo roundInfo = (RoundInfo) data;
-
-        outputFile.print(roundInfo.toString());
-
-        if (!play.hasMoreRounds()) {
-            closeFile();
+        }else{
+            return true;
         }
     }
 
