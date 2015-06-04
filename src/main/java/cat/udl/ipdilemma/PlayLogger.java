@@ -15,16 +15,16 @@ import java.util.Observer;
  * a play as more rounds are performed.
  */
 public class PlayLogger implements Observer {
+    private static final String BASE_FILE_NAME = "PlayLog";
     private static int count = 0;
 
-    File filename;
-    FileWriter fileWriter;
+    File file;
     PrintWriter outputFile;
 
     public PlayLogger(Play play) {
         try {
-            fileWriter = new FileWriter(generateFile());
-            outputFile = new PrintWriter(fileWriter);
+            initializeFile();
+            outputFile = new PrintWriter(new FileWriter(file));
 
             outputFile.print(play.getInfoGame());
             outputFile.println();
@@ -33,34 +33,32 @@ public class PlayLogger implements Observer {
         }
     }
 
-    private File generateFile() throws IOException {
-        filename = new File(generateFileName());
-        filename.createNewFile();
-        return filename;
+    private File initializeFile() throws IOException {
+        do {
+            file = new File(generateFileName());
+        } while (file.exists()); // Ensure the new file does not exists
+
+        file.createNewFile();
+
+        return file;
     }
 
     public String getFileName(){
-        return filename.getName();
+        return file.getName();
     }
 
-    private String generateFileName()
-    {
-        String result = "PlayLog_";
-
+    private String generateFileName() {
         DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy_HH-mm-ss");
         Date date = new Date();
 
         PlayLogger.count += 1;
-        if(PlayLogger.count<10)
-            result += '0';
-        result += String.format("%d_%s.log",PlayLogger.count,dateFormat.format(date));
-        return result;
+
+        return String.format("%s_%02d_%s.log", BASE_FILE_NAME, PlayLogger.count, dateFormat.format(date));
     }
 
     @Override
     public void update(Observable observable, Object data) {
-        if(areValidateParameters(observable,data))
-        {
+        if (areValidUpdateParameters(observable, data)) {
             Play play = (Play) observable;
             RoundInfo roundInfo = (RoundInfo) data;
 
@@ -72,7 +70,7 @@ public class PlayLogger implements Observer {
         }
     }
 
-    boolean areValidateParameters(Observable observable, Object data)
+    private boolean areValidUpdateParameters(Observable observable, Object data)
     {
         if (!(data instanceof RoundInfo)) {
             throw new IllegalArgumentException(
@@ -84,14 +82,7 @@ public class PlayLogger implements Observer {
         }
     }
 
-    private boolean closeFile(){
-        try {
-            outputFile.close();
-            fileWriter.close();
-            return true;
-        } catch (IOException e)  {
-            e.printStackTrace();
-            return false;
-        }
+    private void closeFile(){
+        outputFile.close();
     }
 }
