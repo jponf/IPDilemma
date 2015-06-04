@@ -25,8 +25,7 @@ public class PlayLoggerTest {
 
 
         play = new Play(numberOfRounds, playerA, playerB, utilityMatrix);
-        logger = new PlayLogger();
-        logger.initializeLog(play);
+        logger = new PlayLogger(play);
         play.addObserver(logger);
     }
 

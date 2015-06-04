@@ -21,10 +21,13 @@ public class PlayLogger implements Observer {
     FileWriter fileWriter;
     PrintWriter outputFile;
 
-    public PlayLogger() {
+    public PlayLogger(Play play) {
         try {
             fileWriter = new FileWriter(generateFile());
             outputFile = new PrintWriter(fileWriter);
+
+            outputFile.print(play.getInfoGame());
+            outputFile.println();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -52,11 +55,6 @@ public class PlayLogger implements Observer {
             result += '0';
         result += String.format("%d_%s.log",PlayLogger.count,dateFormat.format(date));
         return result;
-    }
-
-    public void initializeLog(Play play) {
-        outputFile.print(play.getInfoGame());
-        outputFile.println();
     }
 
     @Override

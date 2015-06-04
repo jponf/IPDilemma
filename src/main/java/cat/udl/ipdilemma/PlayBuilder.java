@@ -98,8 +98,7 @@ public class PlayBuilder {
         if(hasPlayers() && hasUtilityMatrix() && hasRounds()) {
             Play play = new Play(nrounds, playerA, playerB, umatrix);
             if(logginEnable){
-                PlayLogger logger = new PlayLogger();
-                logger.initializeLog(play);
+                PlayLogger logger = new PlayLogger(play);
                 play.addObserver(logger);
             }
             return play;
