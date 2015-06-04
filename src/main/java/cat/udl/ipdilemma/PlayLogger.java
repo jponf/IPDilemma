@@ -20,7 +20,6 @@ public class PlayLogger implements Observer {
     File filename;
     FileWriter fileWriter;
     PrintWriter outputFile;
-    int roundNum;
 
     public PlayLogger() {
         try {
@@ -58,8 +57,6 @@ public class PlayLogger implements Observer {
     public void initializeLog(Play play) {
         outputFile.print(play.getInfoGame());
         outputFile.println();
-
-        roundNum = 0;
     }
 
     @Override
