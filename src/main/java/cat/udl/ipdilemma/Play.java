@@ -94,6 +94,13 @@ public class Play extends Observable {
         }
     }
 
+    public String getInfoGame(){
+        String result = umatrix.toString();
+        result += String.format("Player A Strategy: %s\n", playerA.getStrategyName());
+        result += String.format("Player B Strategy: %s\n", playerB.getStrategyName());
+        return result;
+    }
+
     /**
      * Returns the score of the first player.
      *
