@@ -16,11 +16,14 @@ import java.util.Observer;
  */
 public class PlayLogger implements Observer {
     private static final String BASE_FILE_NAME = "PlayLog";
-    private static int count = 0;
 
     File file;
     PrintWriter outputFile;
 
+    /**
+     * Creates a new PlayLogger associated to the given Play.
+     * @param play
+     */
     public PlayLogger(Play play) {
         try {
             initializeFile();
@@ -34,11 +37,14 @@ public class PlayLogger implements Observer {
     }
 
     private File initializeFile() throws IOException {
-        do {
-            file = new File(generateFileName());
-        } while (file.exists()); // Ensure the new file does not exists
+        int count = 0;
 
-        file.createNewFile();
+        do {
+            count += 1;
+            file = new File(generateFileName(count));
+        } while (file.exists());      // Ensure the new file does not exists
+
+        assert(file.createNewFile()); // If the while above is OK, there should be no problem
 
         return file;
     }
@@ -47,13 +53,11 @@ public class PlayLogger implements Observer {
         return file.getName();
     }
 
-    private String generateFileName() {
+    private String generateFileName(int count) {
         DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy_HH-mm-ss");
         Date date = new Date();
 
-        PlayLogger.count += 1;
-
-        return String.format("%s_%02d_%s.log", BASE_FILE_NAME, PlayLogger.count, dateFormat.format(date));
+        return String.format("%s_%s_%02d.log", BASE_FILE_NAME, dateFormat.format(date), count);
     }
 
     @Override
