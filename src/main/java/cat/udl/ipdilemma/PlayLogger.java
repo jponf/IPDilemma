@@ -49,10 +49,6 @@ public class PlayLogger implements Observer {
         return file;
     }
 
-    public String getFileName(){
-        return file.getName();
-    }
-
     private String generateFileName(int count) {
         DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy_HH-mm-ss");
         Date date = new Date();
@@ -60,6 +56,15 @@ public class PlayLogger implements Observer {
         return String.format("%s_%s_%02d.log", BASE_FILE_NAME, dateFormat.format(date), count);
     }
 
+    public String getFileName(){
+        return file.getName();
+    }
+
+    /**
+     * Updates the log with information of the last round.
+     * @param observable
+     * @param data
+     */
     @Override
     public void update(Observable observable, Object data) {
         if (areValidUpdateParameters(observable, data)) {

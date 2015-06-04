@@ -18,7 +18,7 @@ public class RoundInfo {
      * @param round_num Round number
      */
     public RoundInfo(PlayerAction pa_action, PlayerAction pb_action,
-            int pa_score, int pb_score, int round_num) {
+                     int pa_score, int pb_score, int round_num) {
         this.pa_action = pa_action;
         this.pb_action = pb_action;
         this.pa_score = pa_score;
@@ -28,8 +28,10 @@ public class RoundInfo {
 
     public String toString(){
         String result = String.format("Round %d\n", round_num);
-        result += String.format("\tPlayer A { action: %s, score: %d}\n", pa_action.toString(), pa_score);
-        result += String.format("\tPlayer B { action: %s, score: %d}\n", pb_action.toString(), pb_score);
+        result += String.format("\tPlayer A { action: %s, score: %d}\n",
+                pa_action.toString(), pa_score);
+        result += String.format("\tPlayer B { action: %s, score: %d}\n",
+                pb_action.toString(), pb_score);
         return result;
     }
 
