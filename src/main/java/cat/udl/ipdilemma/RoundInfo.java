@@ -26,6 +26,13 @@ public class RoundInfo {
         this.round_num = round_num;
     }
 
+    public String toString(){
+        String result = String.format("Round %d\n", round_num);
+        result += String.format("\tPlayer A { action: %s, score: %d}\n", pa_action.toString(), pa_score);
+        result += String.format("\tPlayer B { action: %s, score: %d}\n", pb_action.toString(), pb_score);
+        return result;
+    }
+
     /**
      * @return Player A action
      */
