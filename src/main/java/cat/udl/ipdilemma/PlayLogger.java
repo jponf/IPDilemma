@@ -55,10 +55,8 @@ public class PlayLogger implements Observer {
         return result;
     }
 
-    public void initializeLog(UtilityMatrix utilityMatrix, Player playerA, Player playerB) {
-        outputFile.println(String.format("Utility Matrix -> {%s}", utilityMatrix.toString()));
-        outputFile.println(String.format("Player A Strategy: %s", playerA.getStrategyName()));
-        outputFile.println(String.format("Player B Strategy: %s", playerB.getStrategyName()));
+    public void initializeLog(Play play) {
+        outputFile.print(play.getInfoGame());
         outputFile.println();
 
         roundNum = 0;
@@ -78,15 +76,7 @@ public class PlayLogger implements Observer {
         Play play = (Play) observable;
         RoundInfo roundInfo = (RoundInfo) data;
 
-        roundNum += 1;
-
-        outputFile.println(String.format("Round %d", roundNum));
-        outputFile.println(String.format("\tPlayer A { action: %s, score: %d}",
-                roundInfo.getPlayerAAction().toString(),
-                roundInfo.getPlayerAScore()));
-        outputFile.println(String.format("\tPlayer B { action: %s, score: %d}",
-                roundInfo.getPlayerBAction().toString(),
-                roundInfo.getPlayerBScore()));
+        outputFile.print(roundInfo.toString());
 
         if (!play.hasMoreRounds()) {
             closeFile();

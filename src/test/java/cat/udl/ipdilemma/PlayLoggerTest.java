@@ -23,11 +23,11 @@ public class PlayLoggerTest {
         Player playerB = new Player(new DefectAlwaysStrategy());
         int numberOfRounds = 5;
 
-        logger = new PlayLogger();
-        logger.initializeLog(utilityMatrix, playerA, playerB);
-        play = new Play(numberOfRounds, playerA, playerB, utilityMatrix);
-        play.addObserver(logger);
 
+        play = new Play(numberOfRounds, playerA, playerB, utilityMatrix);
+        logger = new PlayLogger();
+        logger.initializeLog(play);
+        play.addObserver(logger);
     }
 
     @Test

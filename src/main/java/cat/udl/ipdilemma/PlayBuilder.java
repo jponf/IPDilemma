@@ -99,7 +99,7 @@ public class PlayBuilder {
             Play play = new Play(nrounds, playerA, playerB, umatrix);
             if(logginEnable){
                 PlayLogger logger = new PlayLogger();
-                logger.initializeLog(umatrix, playerA, playerB);
+                logger.initializeLog(play);
                 play.addObserver(logger);
             }
             return play;
