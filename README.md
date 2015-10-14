@@ -78,7 +78,7 @@ No hi ha una estratègia òptima en el sentit de què és la millor davant quals
 <p>
 Es vol realitzar una aplicació per simular tornejos del dilema del presoner iterat. En concret, l'usuari podrà escollir l'estratègia emprada per cada jugador, el nombre de	rondes que tindrà la partida i els valors de la matriu d'utilitat. De cara a fer això, el sistema tindrà implementat diverses estratègies predefinides (algunes d'elles cegues, algunes probabilistes i d'altres intel∙ligents).
 </p>
-<img src="https://github.com/AiCQ-DJM/IPDilemma/blob/master/UML.png?raw=true"></img>
+<img src="UML.png"></img>
 <p>
 També permetrem la definició d'estratègies mixtes que es formin per combinació de dues o més estratègies definides en el sistema (així podrem ampliar el repertori d'estratègies). Per exemple: una forma de combinar seria escollir tres estratègies base i retornar el resultat de la majoria. Per a fer això, el sistema tindrà definit un mecanisme de combinació d'estratègies que permeti definir noves estratègies per a ser utilitzades a les partides.
 </p>
